@@ -1,7 +1,7 @@
 name: LBParticles
 main: LBParticles\Main
 version: 0.0.1
-api: [1.4.0]
+api: [3.0.0]
 load:
 author: LBSG
 description: Lifeboat Particles Plugin For All

@@ -5,13 +5,10 @@ namespace LBParticles;
 use Particle\ParticleManager;
 use pocketmine\Player;
 use pocketmine\event\Listener;
-use pocketmine\command\Command;
 use pocketmine\utils\TextFormat;
 use pocketmine\plugin\PluginBase;
-use pocketmine\command\CommandSender;
-use pocketmine\event\player\PlayerQuitEvent;
-use pocketmine\event\player\PlayerLoginEvent;
-use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\command\{CommandSender, Command};
+use pocketmine\event\player\{PlayerLoginEvent, PlayerQuitEvent, PlayerRespawnEvent};
 
 /**
  * The main class for the particles plugin
@@ -74,7 +71,6 @@ class Main extends PluginBase implements Listener {
 
         $this->getLogger()->info(TextFormat::DARK_GREEN . "Enabled");
     }
-
     /**
      * Handles the commands sent to the plugin
      *
@@ -84,7 +80,7 @@ class Main extends PluginBase implements Listener {
      * @param  array         $args    An array of arguments
      * @return boolean                True allows the command to go through, false sends an error
      */
-    public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+    public function onCommand(CommandSender $sender, Command $command, $label, array $args) :bool {
         $subcommand = strtolower(array_shift($args));
         switch ($subcommand) {
             case "give";

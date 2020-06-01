@@ -2,13 +2,13 @@
 
 namespace Particle;
 
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 use Particle\effects\ParticleEffect;
 
 /**
  * Task used to tick up the particles
  */
-class ParticleTask extends PluginTask {
+class ParticleTask extends Task {
 
 	/**
 	 * The parent plugin
@@ -30,7 +30,6 @@ class ParticleTask extends PluginTask {
 	 * @param LBParticles\Main $plugin The plugin
 	 */
 	public function __construct($plugin) {
-		parent::__construct($plugin);
 		$this->plugin = $plugin;
 	}
 
@@ -56,7 +55,7 @@ class ParticleTask extends PluginTask {
 			$player = $data[0];
 			$effect = $data[1];
 
-			if ($player->closed) {
+			if (!$player->isOnline()) {
 				unset($this->effects[$id]);
 				continue;
 			}
